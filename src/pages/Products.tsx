@@ -1,5 +1,6 @@
 
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
 import { Search, ShoppingBag, Filter, X } from "lucide-react";
@@ -19,19 +20,45 @@ const ProductCard: React.FC<ProductProps> = ({
   id, name, description, price, image, category, rating, delay 
 }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const [imageError, setImageError] = useState(false);
+  const navigate = useNavigate();
+  
+  const handleImageError = () => {
+    setImageError(true);
+    setImageLoaded(true); // Mark as loaded even though it's the fallback
+  };
+  
+  const handleProductClick = () => {
+    navigate(`/product/${id}`);
+  };
+  
+  const handleAddToBag = (e: React.MouseEvent) => {
+    e.stopPropagation(); // Prevent navigation when clicking the button
+    // For now, we'll just navigate to the product detail page
+    navigate(`/product/${id}`);
+  };
   
   return (
     <div 
-      className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col opacity-0"
+      className="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 flex flex-col opacity-0 cursor-pointer"
       style={{ animation: `fadeIn 0.8s ease-out ${delay}ms forwards` }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onClick={handleProductClick}
     >
       <div className="aspect-square w-full overflow-hidden relative">
+        {!imageLoaded && (
+          <div className="absolute inset-0 flex items-center justify-center bg-spa-light">
+            <div className="w-8 h-8 border-3 border-spa-sage border-t-transparent rounded-full animate-spin"></div>
+          </div>
+        )}
         <img 
-          src={image} 
+          src={imageError ? "https://images.unsplash.com/photo-1633555086765-f3a600f7b4aa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" : image} 
           alt={name} 
-          className={`w-full h-full object-cover transition-transform duration-500 ${isHovered ? 'scale-105' : 'scale-100'}`}
+          className={`w-full h-full object-cover transition-transform duration-500 ${isHovered ? 'scale-105' : 'scale-100'} ${imageLoaded ? 'opacity-100' : 'opacity-0'}`}
+          onLoad={() => setImageLoaded(true)}
+          onError={handleImageError}
         />
         <div className="absolute top-3 left-3">
           <span className="bg-spa-sage/10 text-spa-sage text-xs font-medium px-2 py-1 rounded-full">
@@ -61,6 +88,7 @@ const ProductCard: React.FC<ProductProps> = ({
           <button 
             className="bg-spa-sage text-white p-2 rounded-full hover:bg-spa-sage/90 transition-colors duration-300"
             aria-label="Add to bag"
+            onClick={handleAddToBag}
           >
             <ShoppingBag size={18} />
           </button>
