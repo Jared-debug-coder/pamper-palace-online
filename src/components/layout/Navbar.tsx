@@ -2,11 +2,13 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, User, ShoppingBag } from "lucide-react";
+import { useCart } from "../../contexts/CartContext";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+  const { totalItems } = useCart();
   
   useEffect(() => {
     const handleScroll = () => {
@@ -78,14 +80,16 @@ const Navbar = () => {
               <User size={20} />
             </Link>
             <Link 
-              to="/products" 
+              to="/cart" 
               className="relative text-spa-charcoal hover:text-spa-sage transition-colors duration-200"
               aria-label="Shopping Bag"
             >
               <ShoppingBag size={20} />
-              <span className="absolute -top-2 -right-2 bg-spa-sage text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
-                0
-              </span>
+              {totalItems > 0 && (
+                <span className="absolute -top-2 -right-2 bg-spa-sage text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                  {totalItems}
+                </span>
+              )}
             </Link>
             <Link to="/login" className="btn btn-outline text-xs">
               Login
@@ -94,6 +98,18 @@ const Navbar = () => {
           
           {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center">
+            <Link 
+              to="/cart" 
+              className="relative text-spa-charcoal hover:text-spa-sage transition-colors duration-200 mr-4"
+              aria-label="Shopping Bag"
+            >
+              <ShoppingBag size={20} />
+              {totalItems > 0 && (
+                <span className="absolute -top-2 -right-2 bg-spa-sage text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                  {totalItems}
+                </span>
+              )}
+            </Link>
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="text-spa-charcoal focus:outline-none"
@@ -123,6 +139,7 @@ const Navbar = () => {
               </Link>
             ))}
             <Link to="/account" className="text-xl text-spa-charcoal">Account</Link>
+            <Link to="/cart" className="text-xl text-spa-charcoal">Cart</Link>
             <Link to="/login" className="btn btn-primary mt-4 w-full justify-center">
               Login
             </Link>

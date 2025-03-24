@@ -5,6 +5,7 @@ import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
 import { ShoppingBag, ArrowLeft, Star } from "lucide-react";
 import { toast } from "sonner";
+import { useCart } from "../contexts/CartContext";
 
 interface ProductProps {
   id: number;
@@ -22,6 +23,7 @@ const ProductDetail = () => {
   const [product, setProduct] = useState<ProductProps | null>(null);
   const [quantity, setQuantity] = useState(1);
   const [imageLoaded, setImageLoaded] = useState(false);
+  const { addToCart } = useCart();
   
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -123,10 +125,15 @@ const ProductDetail = () => {
   const handleAddToCart = () => {
     if (!product) return;
     
-    // Here you would normally update a cart state or make an API call
-    toast.success(`Added ${quantity} ${product.name} to your cart`);
+    addToCart({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.image,
+      quantity: quantity
+    });
     
-    // For demo purposes, we'll just show a toast notification
+    toast.success(`Added ${quantity} ${product.name} to your cart`);
     console.log(`Added ${quantity} of ${product.name} to cart`);
   };
   
@@ -234,13 +241,25 @@ const ProductDetail = () => {
                 </div>
               </div>
               
-              <button 
-                onClick={handleAddToCart}
-                className="flex items-center justify-center bg-spa-sage text-white py-3 px-6 rounded-md hover:bg-spa-sage/90 transition-colors"
-              >
-                <ShoppingBag size={20} className="mr-2" />
-                Add to Cart
-              </button>
+              <div className="flex space-x-4">
+                <button 
+                  onClick={handleAddToCart}
+                  className="flex items-center justify-center bg-spa-sage text-white py-3 px-6 rounded-md hover:bg-spa-sage/90 transition-colors"
+                >
+                  <ShoppingBag size={20} className="mr-2" />
+                  Add to Cart
+                </button>
+                
+                <button 
+                  onClick={() => {
+                    handleAddToCart();
+                    navigate('/cart');
+                  }}
+                  className="flex items-center justify-center bg-spa-charcoal text-white py-3 px-6 rounded-md hover:bg-spa-charcoal/90 transition-colors"
+                >
+                  Buy Now
+                </button>
+              </div>
               
               <div className="mt-8 border-t border-spa-charcoal/10 pt-6">
                 <div className="grid grid-cols-2 gap-4 text-sm">
