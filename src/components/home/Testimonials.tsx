@@ -39,28 +39,28 @@ const Testimonials = () => {
   const testimonials = [
     {
       text: "I've tried many spas in Nairobi, but SereneSpa offers truly exceptional experiences. The therapists are highly skilled, and the ambiance is perfect for relaxation.",
-      name: "Sarah Kimani",
+      name: "Ashley Njoki",
       role: "Regular Client",
       image: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
       rating: 5
     },
     {
       text: "The attention to detail at SereneSpa is impressive. From the moment you walk in, you're transported to a world of calm. Their body treatments are absolutely divine!",
-      name: "James Mwangi",
-      role: "Business Executive",
+      name: "Jared mogonchi",
+      role: "Chief Technician",
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
       rating: 5
     },
     {
       text: "As someone who travels frequently, I've experienced spas worldwide. SereneSpa in Nairobi stands out for its professional service and authentic treatments.",
-      name: "Amina Hassan",
-      role: "Travel Blogger",
+      name: "Eliza Kamami",
+      role: "Happy Client",
       image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
       rating: 4
     },
     {
       text: "The products they use are of excellent quality. I particularly love their facials - my skin has never looked better since I started regular treatments here.",
-      name: "Michael Omondi",
+      name: "Lennox Kipruto",
       role: "Marketing Professional",
       image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80",
       rating: 5

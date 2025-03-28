@@ -13,21 +13,21 @@ const appointments = [
   {
     id: "apt1",
     service: "Swedish Massage",
-    date: "2023-05-15",
+    date: "2025-01-15",
     time: "10:00 AM",
     status: "completed"
   },
   {
     id: "apt2",
     service: "Aromatherapy Facial",
-    date: "2023-06-20",
+    date: "2025-02-20",
     time: "2:30 PM",
     status: "completed"
   },
   {
     id: "apt3",
     service: "Hot Stone Therapy",
-    date: "2023-07-10",
+    date: "2025-04-01",
     time: "4:00 PM",
     status: "upcoming"
   }
@@ -37,7 +37,7 @@ const appointments = [
 const orders = [
   {
     id: "ord1",
-    date: "2023-05-20",
+    date: "2024-05-20",
     total: 4500,
     status: "delivered",
     items: [
@@ -47,7 +47,7 @@ const orders = [
   },
   {
     id: "ord2",
-    date: "2023-06-15",
+    date: "2024-06-15",
     total: 3800,
     status: "delivered",
     items: [
@@ -93,8 +93,8 @@ const Account = () => {
                     <User size={32} className="text-spa-sage" />
                   </div>
                   <div>
-                    <h3 className="font-medium text-lg">Sarah Kimani</h3>
-                    <p className="text-spa-charcoal/70 text-sm">sarah.k@example.com</p>
+                    <h3 className="font-medium text-lg">Liz Njoki</h3>
+                    <p className="text-spa-charcoal/70 text-sm">liznjoki2@gmail.com</p>
                   </div>
                 </div>
                 <hr className="border-spa-sage/10 mb-6" />
@@ -192,7 +192,7 @@ const Account = () => {
               {/* Dashboard Tab */}
               {activeTab === "dashboard" && (
                 <div className="bg-white rounded-xl shadow-sm p-6 md:p-8">
-                  <h2 className="text-2xl font-serif font-medium mb-6">Welcome Back, Sarah!</h2>
+                  <h2 className="text-2xl font-serif font-medium mb-6">Welcome Back, Liz!</h2>
                   
                   {/* Quick Stats */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
@@ -203,7 +203,7 @@ const Account = () => {
                         </div>
                         <div>
                           <p className="text-spa-charcoal/70 text-sm">Next Appointment</p>
-                          <p className="font-medium">July 10, 2023</p>
+                          <p className="font-medium">April 10, 2025</p>
                           <p className="text-sm">Hot Stone Therapy</p>
                         </div>
                       </div>
@@ -246,7 +246,7 @@ const Account = () => {
                       <div>
                         <h4 className="font-medium">Appointment Booked</h4>
                         <p className="text-sm text-spa-charcoal/70">
-                          Hot Stone Therapy on July 10, 2023 at 4:00 PM
+                          Hot Stone Therapy on March 20, 2025 at 4:00 PM
                         </p>
                         <p className="text-xs text-spa-charcoal/50 mt-1">3 days ago</p>
                       </div>
@@ -552,19 +552,19 @@ const Account = () => {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                           <div>
                             <p className="text-sm text-spa-charcoal/70 mb-1">Full Name</p>
-                            <p className="font-medium">Sarah Kimani</p>
+                            <p className="font-medium">Liz Njoki</p>
                           </div>
                           <div>
                             <p className="text-sm text-spa-charcoal/70 mb-1">Email</p>
-                            <p className="font-medium">sarah.k@example.com</p>
+                            <p className="font-medium">liznjoki2@gmail.com</p>
                           </div>
                           <div>
                             <p className="text-sm text-spa-charcoal/70 mb-1">Phone</p>
-                            <p className="font-medium">+254 712 345 678</p>
+                            <p className="font-medium">+254 723438313</p>
                           </div>
                           <div>
                             <p className="text-sm text-spa-charcoal/70 mb-1">Birth Date</p>
-                            <p className="font-medium">May 12, 1990</p>
+                            <p className="font-medium">May 12, 2004</p>
                           </div>
                         </div>
                       </div>
@@ -602,7 +602,7 @@ const Account = () => {
                               M-Pesa
                             </div>
                             <div>
-                              <p className="font-medium">+254 712 345 678</p>
+                              <p className="font-medium">+254 723438313</p>
                               <p className="text-sm text-spa-charcoal/70">Mobile Money</p>
                             </div>
                           </div>
@@ -643,7 +643,7 @@ const Account = () => {
                           </div>
                           <div>
                             <p className="font-medium">Password</p>
-                            <p className="text-sm text-spa-charcoal/70">Last changed 3 months ago</p>
+                            <p className="text-sm text-spa-charcoal/70">Last changed 1 months ago</p>
                           </div>
                         </div>
                       </div>
